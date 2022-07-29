@@ -1,30 +1,25 @@
-import React from "react";
-import Login from "./Login";
-import Dashboard from "./Dashboard";
-import Home from "./Home";
-import Notfound from "./Notfound";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
+import Search from "./Demo/Search";
+import List from "./Demo/List";
+import Home from "./Demo/Home";
+import Courses from "./Demo/Courses";
 
 function App() {
   return (
     <Router>
-      <div>
-        <h2>React Route </h2>
-        <Link to="/login">Login</Link>
-        <br />
-        <Link to="/home">Home</Link>
-        <br />
-        <Link to="/dashboard">Dashboard</Link>
-        <br />
-      </div>
+      <Link to="/home">Home</Link>
+      <br></br>
+      <Link to="courses">Courses</Link>
       <Routes>
-        <Route exact path="/login" element={<Login />} />
-
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
-        <Route path="" element={<Notfound />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/courses" element={<Courses />}>
+          <Route path="search" element={<Search />} />
+          <Route path="list" element={<List />} />
+        </Route>
       </Routes>
     </Router>
   );
 }
 export default App;
+//Routes are chosen based on the best match
+//Route: Route is the conditionally its path matches the current URL.
